@@ -82,16 +82,23 @@ namespace Holmusk_FoodApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Log([Bind(Include = "FoodName,FoodId,Quantity,LogDate")] FoodLogViewModel foodlog)
-        {
-            
+        public ActionResult Log(FoodLogViewModel foodlog)
+        {            
             if (ModelState.IsValid)
             {
+                //if user entry food is not in our db. It will be creat a new food record
                 if (foodlog.FoodId == 0)
                 {
                     Food myfood = new Food();
                     myfood.FoodName = foodlog.FoodName;
-                    myfood.Unit = FoodUnit.g;
+                    myfood.Unit = foodlog.FUnit;
+                    myfood.Calcium = foodlog.Calcium;
+                    myfood.Cholesterol = foodlog.Cholesterol;
+                    myfood.Energy = foodlog.Energy;
+                    myfood.Sugar = foodlog.Sugar;
+                    myfood.Vitamins = foodlog.Vitamins;
+                    myfood.Protein = foodlog.Protein;
+                    myfood.Description = foodlog.Description;
                     db.Food.Add(myfood);
                     db.SaveChanges();
                     foodlog.FoodId = myfood.Foodid;

@@ -28,9 +28,7 @@ namespace Holmusk_FoodApp.Controllers
             var foodlist = db.Food.Where(m => m.FoodName.Contains(q)).ToList().OrderBy(y=>y.FoodName);
 
             foreach (var item in foodlist)
-            {
-                //FoodUnit myunit = (FoodUnit)item.Unit;
-                //var foodname = item.FoodName + "(" + myunit + ")";
+            {               
                 result.Add(new KeyValuePair<string, string>(item.Foodid.ToString(), item.FoodName.ToString()));
             }
             return Json(result, JsonRequestBehavior.AllowGet);
