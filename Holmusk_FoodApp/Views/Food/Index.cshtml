@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Holmusk_FoodApp.Models.Food>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FoodName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cholesterol)  (g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vitamins) (g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Energy) (g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sugar) (g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Protein) (g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Calcium) (g)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FoodName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cholesterol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vitamins)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Energy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sugar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Protein)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Calcium)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Foodid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Foodid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Foodid })
+        </td>
+    </tr>
+}
+
+</table>
