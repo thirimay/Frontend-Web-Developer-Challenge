@@ -29,11 +29,18 @@ namespace Holmusk_FoodApp.Controllers
 
             foreach (var item in foodlist)
             {
-                FoodUnit myunit = (FoodUnit)item.Unit;
-                var foodname = item.FoodName + "(" + myunit + ")";
-                result.Add(new KeyValuePair<string, string>(item.Foodid.ToString(), foodname));
+                //FoodUnit myunit = (FoodUnit)item.Unit;
+                //var foodname = item.FoodName + "(" + myunit + ")";
+                result.Add(new KeyValuePair<string, string>(item.Foodid.ToString(), item.FoodName.ToString()));
             }
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult GetDetail(int id)
+        {           
+            Food food = db.Food.Find(id);
+            return Json(food);
         }
 
         // GET: Food/Details/5

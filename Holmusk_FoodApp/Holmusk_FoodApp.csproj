@@ -182,6 +182,10 @@
     <Compile Include="Migrations\201509070437438_mig070904.Designer.cs">
       <DependentUpon>201509070437438_mig070904.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201509090638583_mig090901.cs" />
+    <Compile Include="Migrations\201509090638583_mig090901.Designer.cs">
+      <DependentUpon>201509090638583_mig090901.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FoodModel.cs" />
@@ -1099,6 +1103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201509070437438_mig070904.resx">
       <DependentUpon>201509070437438_mig070904.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509090638583_mig090901.resx">
+      <DependentUpon>201509090638583_mig090901.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

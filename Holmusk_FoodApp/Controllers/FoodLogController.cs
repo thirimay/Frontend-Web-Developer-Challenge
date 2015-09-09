@@ -82,12 +82,27 @@ namespace Holmusk_FoodApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Log([Bind(Include = "FoodId,Quantity,LogDate")] FoodLog foodlog)
+        public ActionResult Log([Bind(Include = "FoodName,FoodId,Quantity,LogDate")] FoodLogViewModel foodlog)
         {
+            
             if (ModelState.IsValid)
             {
-                foodlog.UserId = User.Identity.Name;
-                db.FoodLog.Add(foodlog);
+                if (foodlog.FoodId == 0)
+                {
+                    Food myfood = new Food();
+                    myfood.FoodName = foodlog.FoodName;
+                    myfood.Unit = FoodUnit.g;
+                    db.Food.Add(myfood);
+                    db.SaveChanges();
+                    foodlog.FoodId = myfood.Foodid;
+                }
+
+                FoodLog myfoodlog = new FoodLog();
+                myfoodlog.FoodId = foodlog.FoodId;
+                myfoodlog.Quantity = foodlog.Quantity;
+                myfoodlog.LogDate = foodlog.LogDate;
+                myfoodlog.UserId = User.Identity.Name;
+                db.FoodLog.Add(myfoodlog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
